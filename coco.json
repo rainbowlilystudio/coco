@@ -1,0 +1,66 @@
+{
+  "coco_version": "0.1",
+  "site": "example.com",
+  "welcome": true,
+  
+  "human_readable": "We welcome AI agents to help users interact with our site. Please review the permissions below to understand what actions are allowed.",
+  
+  "contact": "agents@example.com",
+  
+  "permissions": {
+    "read_public": true,
+    "read_listings": true,
+    "read_prices": true,
+    "read_availability": true,
+    "read_reviews": true,
+    "read_profiles": false,
+    
+    "submit_forms": false,
+    "submit_application": false,
+    "make_reservation": false,
+    "book_appointment": false,
+    "submit_inquiry": true,
+    
+    "create_account": false,
+    "login_for_user": false,
+    "update_profile": false,
+    "manage_preferences": false,
+    
+    "add_to_cart": false,
+    "purchase": false,
+    "purchase_limit": null,
+    "subscribe": false,
+    "cancel_subscription": false,
+    
+    "post_review": false,
+    "post_comment": false,
+    "upload_content": false,
+    "send_message": false
+  },
+  
+  "agent_requirements": {
+    "must_identify": true,
+    "must_state_purpose": true,
+    "must_state_user": true,
+    "must_log_actions": false
+  },
+  
+  "rate_limit": {
+    "requests_per_minute": 30,
+    "requests_per_hour": 500,
+    "requests_per_day": 5000,
+    "concurrent_requests": 3
+  },
+  
+  "paths": {
+    "/public/*": {
+      "read_public": true
+    },
+    "/admin/*": {
+      "welcome": false
+    },
+    "/api/*": {
+      "welcome": false
+    }
+  }
+}

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coco Protocol — Come in, this is what you Can dO</title>
+    <meta name="description" content="The ethical invitation protocol for AI agents to interact with websites. Simple. Open. Transparent.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --coconut-shell: #8B4513;
+            --coconut-dark: #5D2E0C;
+            --coconut-light: #D2B48C;
+            --coconut-cream: #FFF8E7;
+            --coconut-white: #FFFDF7;
+            --ocean-deep: #0A2540;
+            --ocean-mid: #1A4B6E;
+            --palm-green: #2D5A3D;
+            --sand: #F5E6C8;
+            --coral: #FF6B5B;
+            --text-dark: #1a1a1a;
+            --text-mid: #4a4a4a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--coconut-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--ocean-mid) 50%, var(--palm-green) 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 248, 231, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 91, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        /* Floating coconuts */
+        .coconut {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .coconut:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .coconut:nth-child(2) { top: 60%; left: 85%; animation-delay: -5s; }
+        .coconut:nth-child(3) { top: 80%; left: 15%; animation-delay: -10s; }
+        .coconut:nth-child(4) { top: 20%; left: 75%; animation-delay: -15s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(20px) rotate(-5deg); }
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 900px;
+        }
+        
+        .logo {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--coconut-cream);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .tagline {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: var(--coconut-light);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .tagline span {
+            color: var(--coral);
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 60px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--coral);
+            color: white;
+            box-shadow: 0 4px 20px rgba(255, 107, 91, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 91, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--coconut-cream);
+            border: 2px solid var(--coconut-cream);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--coconut-cream);
+            color: var(--ocean-deep);
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(10px); }
+        }
+        
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+            color: var(--ocean-deep);
+        }
+        
+        /* Problem Section */
+        .problem {
+            background: var(--sand);
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--coral);
+        }
+        
+        .problem-card h3 {
+            font-family: 'Space Mono', monospace;
+            color: var(--coral);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: var(--coconut-white);
+        }
+        
+        .code-block {
+            background: var(--ocean-deep);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+            box-shadow: 0 10px 40px rgba(10, 37, 64, 0.3);
+        }
+        
+        .code-block pre {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--coconut-cream);
+            line-height: 1.8;
+        }
+        
+        .code-block .comment { color: #6b8a8a; }
+        .code-block .key { color: var(--coral); }
+        .code-block .string { color: #7ec699; }
+        .code-block .boolean { color: #f9a825; }
+        
+        /* How It Works */
+        .how-it-works {
+            background: linear-gradient(180deg, var(--coconut-white) 0%, var(--sand) 100%);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--ocean-deep);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .step h3 {
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 0.5rem;
+            color: var(--ocean-deep);
+        }
+        
+        /* Principles */
+        .principles {
+            background: var(--ocean-deep);
+            color: white;
+        }
+        
+        .principles h2 {
+            color: var(--coconut-cream);
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .principle {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .principle:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .principle-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .principle h3 {
+            font-family: 'Space Mono', monospace;
+            color: var(--coral);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .principle p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--palm-green);
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            color: white;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--ocean-deep);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer a {
+            color: var(--coral);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--coconut-cream);
+            margin-bottom: 1rem;
+        }
+        
+        .created-by {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .code-block {
+                padding: 1.5rem;
+            }
+            
+            .code-block pre {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="coconut">🥥</div>
+        <div class="coconut">🥥</div>
+        <div class="coconut">🥥</div>
+        <div class="coconut">🥥</div>
+        
+        <div class="hero-content">
+            <div class="logo">🥥</div>
+            <h1>Coco Protocol</h1>
+            <p class="tagline"><span>C</span>ome in, this is what y<span>O</span>u <span>C</span>an d<span>O</span></p>
+            <p class="subtitle">The ethical invitation protocol for AI agents to interact with websites. Simple. Open. Transparent.</p>
+            <div class="cta-buttons">
+                <a href="#solution" class="btn btn-primary">See How It Works</a>
+                <a href="https://github.com/rainbowlilystudio/coco" class="btn btn-secondary">View on GitHub</a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2>The Problem</h2>
+            <p>AI agents are everywhere — shopping, booking, applying, searching. But there's no standard way for websites to say what agents can do.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>robots.txt</h3>
+                    <p>Only says "don't crawl" — no way to say "welcome, here's what you CAN do"</p>
+                </div>
+                <div class="problem-card">
+                    <h3>OAuth</h3>
+                    <p>Complex, requires APIs — most websites can't implement it</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Scraping</h3>
+                    <p>Chaotic, unethical, no consent — bad for everyone</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Browser Hijacking</h3>
+                    <p>Security nightmare — users don't know what's happening</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Solution Section -->
+    <section class="solution" id="solution">
+        <div class="container">
+            <h2>The Solution</h2>
+            <p>One JSON file. Clear permissions. Any website can add it in 5 minutes.</p>
+            
+            <div class="code-block">
+<pre><span class="comment">// https://yoursite.com/coco.json</span>
+{
+  <span class="key">"coco_version"</span>: <span class="string">"0.1"</span>,
+  <span class="key">"site"</span>: <span class="string">"yoursite.com"</span>,
+  <span class="key">"welcome"</span>: <span class="boolean">true</span>,
+  
+  <span class="key">"permissions"</span>: {
+    <span class="key">"read_listings"</span>: <span class="boolean">true</span>,
+    <span class="key">"make_reservation"</span>: <span class="boolean">true</span>,
+    <span class="key">"purchase"</span>: <span class="boolean">false</span>,
+    <span class="key">"submit_forms"</span>: <span class="boolean">false</span>
+  },
+  
+  <span class="key">"human_readable"</span>: <span class="string">"We welcome AI agents to browse 
+  and book. No purchases or form submissions."</span>
+}</pre>
+            </div>
+            
+            <p style="text-align: center; font-size: 1.1rem; margin-top: 2rem;">
+                That's it. Agents check <code style="background: var(--sand); padding: 0.3rem 0.6rem; border-radius: 6px;">coco.json</code> before acting. Clear rules. Ethical AI.
+            </p>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Website Declares</h3>
+                    <p>Add a <code>coco.json</code> file to your root with your permissions</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Agent Checks</h3>
+                    <p>Before acting, agents fetch and read your <code>coco.json</code></p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Rules Are Clear</h3>
+                    <p>Agent only does what's explicitly allowed. No guessing.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Users Stay Safe</h3>
+                    <p>Transparent. Ethical. User always in control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Principles -->
+    <section class="principles">
+        <div class="container">
+            <h2>The Principles</h2>
+            
+            <div class="principles-grid">
+                <div class="principle">
+                    <div class="principle-icon">🚪</div>
+                    <h3>Invitation</h3>
+                    <p>Not "stay out" — but "welcome, here's what you can do"</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">✅</div>
+                    <h3>Consent</h3>
+                    <p>No action without explicit permission</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">🪪</div>
+                    <h3>Identity</h3>
+                    <p>Agents identify themselves honestly</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">👁️</div>
+                    <h3>Transparency</h3>
+                    <p>Users see everything their agent does</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">✨</div>
+                    <h3>Simplicity</h3>
+                    <p>One JSON file. Anyone can implement it.</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">🔓</div>
+                    <h3>Open</h3>
+                    <p>Free, open source, belongs to everyone</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join the Movement</h2>
+            <p>The future of AI agents is being written now. Help us make it ethical, transparent, and open.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/rainbowlilystudio/coco" class="btn btn-primary">View Spec on GitHub</a>
+                <a href="COCO_SPEC_v0.1.md" class="btn btn-secondary">Read the Spec</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">🥥 Coco Protocol</div>
+        
+        <div class="footer-links">
+            <a href="COCO_MANIFESTO.md">Manifesto</a>
+            <a href="COCO_SPEC_v0.1.md">Specification</a>
+            <a href="COCO_EXAMPLES.md">Examples</a>
+            <a href="https://github.com/rainbowlilystudio/coco">GitHub</a>
+        </div>
+        
+        <p>Open Source · CC0 1.0 · Free for Everyone</p>
+        
+        <div class="created-by">
+            Created by <a href="https://rainbowlilystudio.com">Rainbow Lily Studio</a><br>
+            <span style="opacity: 0.7;">February 2026</span>
+        </div>
+    </footer>
+</body>
+</html>
