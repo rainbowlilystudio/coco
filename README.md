@@ -1,6 +1,6 @@
 # 🥥 Coco Protocol
 
-### Come in, this is what you Can dO
+### Come in, this is what yOu Can dO
 
 **The ethical invitation protocol for AI agents to interact with websites.**
 
@@ -167,4 +167,4 @@ Open an issue or submit a PR.
 
 ---
 
-*"Come in, this is what you can do."* 🥥
+*"Come in, this is what yOu Can dO."* 🥥
